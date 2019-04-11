@@ -4,7 +4,7 @@ the user to encrypt or decrypt and the message itself*/
 // Use terminal input via "./a.out"
 // All things need to be inputted into the input file before program runs
 
-//Make a length constraint
+//Make a length constraint yeet
 
 
 

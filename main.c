@@ -12,8 +12,7 @@ the user to encrypt or decrypt and the message itself*/
 #include <stdlib.h>
 
 
-
-char EncryptRWithKey(char[200]); //This is the prototype of the function that will rotationally encrpyt a message
+char EncryptRWithKey(char message[200]); //This is the prototype of the function that will rotationally encrpyt a message
 //char DecryptRWithKey(char[n]); //Prototpye for decrypting a rotated message when key is known
 //char DecryptW/okey(char[n]); // prototype for decrpyting without key (this will be difficult to code)
 
@@ -21,7 +20,7 @@ char EncryptRWithKey(char[200]); //This is the prototype of the function that wi
 int main() {
     int operator; //this is the integer of the key from 0-2 and determines what the program does
     int Ekey=0; //Ekey is for the encytption key, default is 0 (no rotation)
-    //int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
+    int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
     //int n = 200; // n is length of the string (the message)
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
@@ -61,77 +60,45 @@ int main() {
          }
         switch(operator) {
             case 0:
-            printf("Enter desired cipher key ranging from 1-25 (Inclusive):");
-            scanf("%d", &Ekey);
-                if (Ekey <1 || Ekey >25) // this ensures the user has inputted a key from 1-25
-                {
-                    printf("INVALID KEY\n");   
-                    exit(0); //if the user inputs outside of 1-25 the program exits
-                }
-                else 
-                {
-                    printf("Key selected: %d\n", Ekey);
-                    //EncryptRWithKey;
-                    printf("Encrypted message is: %s\n", message);
-                    exit(0);
-                }
-
+                printf("Enter desired cipher key ranging from 1-25 (Inclusive):");
+                scanf("%d", &Ekey);
+                    if (Ekey <1 || Ekey >25) // this ensures the user has inputted a key from 1-25
+                    {
+                        printf("INVALID KEY\n");   
+                        exit(0); //if the user inputs outside of 1-25 the program exits
+                    }
+                    else 
+                   {
+                        printf("Key selected: %d\n", Ekey);
+                        //EncryptRWithKey(message);
+                        printf("Encrypted message is: %s\n", message);
+                        exit(0);
+                    }
             break;
-            /*case 1:
-                if (operator == 2 || operator == 3)
-                {
-                    printf("Enter code to be deciphered: \n");
-                    scanf(" %[^\n]s", message);
-                }            
-        switch(operator) {
+            case 1:
+                printf("Enter rotational Key: ");
+                scanf("%d", Dkey);
+                if (Dkey <1 || Dkey >25) // this ensures the user has inputted a key from 1-25
+                    {
+                        printf("INVALID KEY\n");   
+                        exit(0); //if the user inputs outside of 1-25 the program exits
+                    }
+                    else 
+                   {
+                        printf("Key selected: %d\n", Dkey);
+                //decryptfunction
+                printf("Deciphered Message is: %s", message);
+                break;
             case 2:
-            printf("Enter cipher Code Key (1-25):\n");
-            scanf("%d", &key2);
-            //printf("Decrypted message is: \n", message);
-            break;
-            case 3:
-            printf("Wow make my job hard why don't you?\n");
-            break; */
-        }
-        
+                
         
     
     return 0;
 }
 
-/*char EncryptRWithKey(char[200]) {
-    char message[200], En;
-    int i;
-    for(i = 0; message[i] != '\0' ; i++)
-        message[i] = message[i] + 2;
-        En = message[i];
-        if(En)
-        printf("%d", i);
-}*/
 
-
-char EncryptRWithKey(char[200]) {
-    char message[200];
-    int i;
-    for (i=0; message[i] !='\n'; ++i){
-      ch = message[i];
-      if(ch >= 'a' && ch <= 'z'){
-          ch = ch + key2; 
-          if(ch > 'z') {
-            ch = ch - 'z' + 'a' - 1;
-            }    
-            message[i]=ch;
-
-      }
-      else if (ch >= 'A' && ch <='Z'){
-          ch=ch+key2;
-          if (ch > 'Z'){
-              ch=ch-'Z'+'A'-1;
-          }
-          message[i] = ch; 
-      }
-    }
-    return ch;
+char EncryptRWithKey(char message[200]) {
+    
 }
 
 

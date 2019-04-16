@@ -21,10 +21,10 @@ int main() {
     int operator; //this is the integer of the key from 0-2 and determines what the program does
     int Ekey=0; //Ekey is for the encytption key, default is 0 (no rotation)
     //int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
-    int n = 200; // n is length of the string (the message)
+    //int n = 200; // n is length of the string (the message)
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
-    char message[n];
+    char message[200];
     //int key2;
     printf("Welcome to the cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by inputting the relating operator into the terminal:\n\n"); 
@@ -46,7 +46,7 @@ int main() {
     
         if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
-            printf("\nOperator selected: %d\n", operator); // this prints the key selected by the user
+            printf("Operator selected: %d\n", operator); // this prints the key selected by the user
         else {
             printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message...
             exit(0); // ...and exits the program
@@ -54,17 +54,17 @@ int main() {
         if (operator == 0 || operator == 1) // this is for using the rotation cipher function
         { 
             printf("Enter message: "); // the message is the one that needs to be encrypted or decyrpted 
-            scanf("%[^\n]s", message); // scans the message written until a new line
+            scanf(" %[^\n]s", message); // scans the message written until a new line
             printf("\nMessage is: %s\n", message); // this prints the message itself
             //this also works to check for any issue in scanning the message by the user (manually)
          }
         switch(operator) {
             case 0:
-            printf("Enter desired cipher key ranging (Inclusive) from 1-25:");
+            printf("Enter desired cipher key ranging from 1-25 (Inclusive):");
             scanf("%d", &Ekey);
                 if (Ekey <1 || Ekey >25) // this ensures the user has inputted a key from 1-25
                 {
-                    printf("INVALID KEY\n");   // Edit this to stop from being broken
+                    printf("INVALID KEY\n");   
                     exit(0); //if the user inputs outside of 1-25 the program exits
                 }
                 else 

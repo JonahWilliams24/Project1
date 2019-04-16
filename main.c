@@ -13,18 +13,21 @@ the user to encrypt or decrypt and the message itself*/
 
 
 
-char EncryptWithKey(char[200]); //This is the prototype of the function that will encrypt a message with a desired key
-//char DecryptWithKey(char[n]); //Prototpye for decrypting message when key is known
+//char EncryptRWithKey(char[200]); //This is the prototype of the function that will rotationally encrpyt a message 
+//char DecryptRWithKey(char[n]); //Prototpye for decrypting a rotated message when key is known
 //char DecryptW/okey(char[n]); // prototype for decrpyting without key (this will be difficult to code)
 
 int main() {
     int operator; //this is the integer of the key from 0-2 and determines what the program does
-    int key, n=200; // key is the rotation of the cipher code, n is length of the string
+    int Ekey=0; //Ekey is for the encytption key, default is 0 (no rotation)
+    //int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
+    int n = 200; // n is length of the string (the message)
+    //all these int variables can be written on the same line, I chose not to so I could explain their use
+    //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
     char message[n];
-    //int KEY[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
-    int key2;
+    //int key2;
     printf("Welcome to the cipher Code Program!\n"); //This prints the title card
-    printf("Select the required function by inputting the relating operator into the terminal.\n\n"); 
+    printf("Select the required function by inputting the relating operator into the terminal:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
     printf("To encrypt a message using a rotational cipher, with a desired key, input '0' into the terminal.\n"); 
     //option 1 is for the user to input a message and a key for encryption with the rotational cipher
@@ -36,47 +39,49 @@ int main() {
     //this is where the program will attempt to decipher the message of a rotational cipher without knowing the key
     printf("To decrpyt a message with a substition cipher knowing the substitution used input '4' into the terminal.\n");
     //This will decrypt a message using the users substitution index
-    printf("To decrypt a substitution cipher without knowing the substition input '5' into the terminal");
+    printf("To decrypt a substitution cipher without knowing the substition input '5' into the terminal.\n");
     //This is the hardest one to do with 26! possible combinations. BRUTE FORCE WILL NOT WORK!!!
+    printf("Operator: ");
     scanf("%d", &operator); //This scans the input from the user
     
         if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
-            printf("Operator selected: %d\n", operator); // this prints the key selected so the user knows
+            printf("\nOperator selected: %d\n", operator); // this prints the key selected by the user
         else {
-            printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message
-            exit(0); // and exits the program
+            printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message...
+            exit(0); // ...and exits the program
         }
-        if (operator == 0 || operator == 1) { // this is for encrypting messages 
-            printf("Enter message into terminal.\n"); 
-            // the message is the one that needs to be encrypted or decyrpted 
-            scanf(" %[^\n]s", message); // scans the message from line 2 of input file 
-            printf("Message is: %s\n", message); // this prints the message itself
+        if (operator == 0 || operator == 1) // this is for using the rotation cipher function
+        { 
+            printf("Enter message: "); // the message is the one that needs to be encrypted or decyrpted 
+            scanf("%[^\n]s", message); // scans the message written until a new line
+            printf("\nMessage is: %s\n", message); // this prints the message itself
+            //this also works to check for any issue in scanning the message by the user (manually)
          }
         switch(operator) {
             case 0:
-            printf("Enter desired cipher key ranging from 1-25:\n");
-            scanf("%d", &key);
-            //key=key;
-                //if (key!=KEY){
-                    //printf("INVALID KEY");   // Edit this to stop from being broken
-                    //exit(0);
-                //}
-            printf("Key selected: %d\n", key);
-            message = EncryptWithKey(message);
-            printf("Encrypted message is: %s" encryptedmessage);
+            printf("Enter desired cipher key ranging (Inclusive) from 1-25:");
+            scanf("%d", &Ekey);
+                if (Ekey <1 || Ekey >25) // this ensures the user has inputted a key from 1-25
+                {
+                    printf("INVALID KEY\n");   // Edit this to stop from being broken
+                    exit(0); //if the user inputs outside of 1-25 the program exits
+                }
+                else 
+                {
+                    printf("Key selected: %d\n", Ekey);
+                    //message = EncryptWithKey(message);
+                    printf("Encrypted message is: %s\n", message);
+                    exit(0);
+                }
+
             break;
-            case 1:
-            srand(time(NULL)); //this uses the time to generate a random number 
-                randomkey = rand() % 26 + 1; // %26 gives the remainder of the 
-                printf("Random key is: %d\n", randomkey);
-                printf("Encrypted message is: \n"); // INPUT ENCRYPTED MESSAGE HERE
-                //exit(0);
-            }
-        if (operator == 2 || operator == 3){
-            printf("Enter code to be deciphered: \n");
-            scanf(" %[^\n]s", message);
-            }            
+            /*case 1:
+                if (operator == 2 || operator == 3)
+                {
+                    printf("Enter code to be deciphered: \n");
+                    scanf(" %[^\n]s", message);
+                }            
         switch(operator) {
             case 2:
             printf("Enter cipher Code Key (1-25):\n");
@@ -85,7 +90,7 @@ int main() {
             break;
             case 3:
             printf("Wow make my job hard why don't you?\n");
-            break;
+            break; */
         }
         
         
@@ -94,7 +99,7 @@ int main() {
 }
 
 
-char EncryptWithKey(char[200]) {
+/*char EncryptWithKey(char[200]) {
     char ch;
     int i;
     for (i=0; message[i] !='\n'; ++i){
@@ -127,4 +132,4 @@ void stringfunction(char *array){
 }
 
 
-x = functinon(y)
+x = functinon(y)*/

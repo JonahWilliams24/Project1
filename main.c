@@ -13,9 +13,10 @@ the user to encrypt or decrypt and the message itself*/
 
 
 
-//char EncryptRWithKey(char[200]); //This is the prototype of the function that will rotationally encrpyt a message 
+char EncryptRWithKey(char[200]); //This is the prototype of the function that will rotationally encrpyt a message
 //char DecryptRWithKey(char[n]); //Prototpye for decrypting a rotated message when key is known
 //char DecryptW/okey(char[n]); // prototype for decrpyting without key (this will be difficult to code)
+
 
 int main() {
     int operator; //this is the integer of the key from 0-2 and determines what the program does
@@ -24,8 +25,8 @@ int main() {
     //int n = 200; // n is length of the string (the message)
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
+    //int i; // i will be the index key for the strings so that the letters can be altered
     char message[200];
-    //int key2;
     printf("Welcome to the cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by inputting the relating operator into the terminal:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
@@ -70,7 +71,7 @@ int main() {
                 else 
                 {
                     printf("Key selected: %d\n", Ekey);
-                    //message = EncryptWithKey(message);
+                    //EncryptRWithKey;
                     printf("Encrypted message is: %s\n", message);
                     exit(0);
                 }
@@ -98,9 +99,19 @@ int main() {
     return 0;
 }
 
+/*char EncryptRWithKey(char[200]) {
+    char message[200], En;
+    int i;
+    for(i = 0; message[i] != '\0' ; i++)
+        message[i] = message[i] + 2;
+        En = message[i];
+        if(En)
+        printf("%d", i);
+}*/
 
-/*char EncryptWithKey(char[200]) {
-    char ch;
+
+char EncryptRWithKey(char[200]) {
+    char message[200];
     int i;
     for (i=0; message[i] !='\n'; ++i){
       ch = message[i];
@@ -123,13 +134,9 @@ int main() {
     return ch;
 }
 
-void stringfunction(char *);
 
 
-void stringfunction(char *array){
-    array[3] = 'A';
-       
-}
 
 
-x = functinon(y)*/
+
+

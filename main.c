@@ -23,7 +23,7 @@ int main() {
     int n = 200; // n is length of the string (the message)
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
-    int i; // i will be the index key for the strings so that the letters can be altered
+    //int i; // i will be the index key for the strings so that the letters can be altered
     char message[n]; 
     printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by inputting the relating operator into the terminal:\n\n"); 
@@ -84,19 +84,29 @@ int main() {
                 } 
             break;
             case 1:
-                printf("Enter rotational Key: ");
+                printf("Enter cipher key ranging from 1-25 (Inclusive):");
                 scanf("%d", &Dkey);
                 if (Dkey <1 || Dkey >25) // this ensures the user has inputted a key from 1-25
+                {
+                    printf("INVALID KEY\n");   
+                    exit(0); //if the user inputs outside of 1-25 the program exits
+                }
+                else 
+                {
+                    printf("\nKey selected: %d\n", Dkey);
+                    for (int i=0; i<200 && message[i] != '\0'; i++)
                     {
-                        printf("/nINVALID KEY\n");   
-                        exit(0); //if the user inputs outside of 1-25 the program exits
+                        if (message[i] <=122 && message[i] >=97){
+                            message[i] = message[i] - 32;
+                        }
+                        if (message[i] <=90 && message[i] >= 65){
+                            message[i] = message[i] - Dkey;
+                        }
                     }
-                    else 
-                    {
-                    printf("Key selected: %d\n", Dkey);
-                    //decryptfunction
-                    printf("Deciphered Message is: %s", message);
-                    }
+   
+                    printf("%s", message);
+                    exit(0);
+                }
 
                 break;
             case 2:

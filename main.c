@@ -32,21 +32,21 @@ int main() {
     char message[n]; 
     char sub[26];
     printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
-    printf("Select the required function by inputting the relating operator into the terminal:\n\n"); 
+    printf("Select the required function by inputting the relating operator into the 'input' file:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
-    printf("To encrypt a message using a rotational cipher, with a desired key, input '0' into the terminal.\n"); 
+    printf("To encrypt a message using a rotational cipher, with a desired key, input '0' into the 'input' file.\n"); 
     //option 1 is for the user to input a message and a key for encryption with the rotational cipher
-    printf("To decrypt a message with a rotational cipher with a known key, input '1' into the terminal.\n");
+    printf("To decrypt a message with a rotational cipher with a known key, input '1' into the 'input' file.\n");
     //option 2 is to decrypt a message when the user knows the key of a rotation cipher message 
-    printf("To encrypt a message using a desired substitution, input '2' into the terminal.\n");
+    printf("To encrypt a message using a desired substitution, input '2' into the 'input' file.\n");
     //option 3 is for the user to encrpt using a substitution where they can choose which letters are changed to what
-    printf("To decrypt a message with a rotational cipher without knowing a key input '3' into the terminal.\n");
+    printf("To decrypt a message with a rotational cipher without knowing a key, input '3' into the 'input' file.\n");
     //this is where the program will attempt to decipher the message of a rotational cipher without knowing the key
-    printf("To decrpyt a message with a substition cipher knowing the substitution used input '4' into the terminal.\n");
+    printf("To decrpyt a message with a substition cipher knowing the substitution used, input '4' into the 'input' file.\n");
     //This will decrypt a message using the users substitution index
-    printf("To decrypt a substitution cipher without knowing the substition input '5' into the terminal.\n");
+    printf("To decrypt a substitution cipher without knowing the substition input '5' into the input file.\n");
     //This is the hardest one to do with 26! possible combinations. BRUTE FORCE WILL NOT WORK!!!
-    printf("Operator: ");
+    //printf("Operator: \n");
     scanf("%d", &operator); //This scans the input from the user
     
         if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
@@ -56,15 +56,19 @@ int main() {
             printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message...
             exit(0); // ...and exits the program
         }
-        if (operator == 0 || operator == 1) // this is for using the rotation cipher function
+        /*if (operator == 0 || operator == 1) // this is for using the rotation cipher function
         { 
-            //printf("Enter message: "); // the message is the one that needs to be encrypted or decyrpted 
+            //printf("Enter message: \n"); // the message is the one that needs to be encrypted or decyrpted 
             scanf(" %[^\n]s", message); // scans the message written until a new line
-            printf("\nMessage is: %s\n", message); // this prints the message itself
+            printf("Message is: %s\n", message); // this prints the message itself
             //this also works to check for any issue in scanning the message by the user (manually)
-         }
+         }*/
         switch(operator) {
             case 0:
+                scanf(" %[^\n]s", message); // scans the message written until a new line
+                printf("Message is: ");
+                printf("%s", message); // this prints the message itself
+                //this also works to check for any issue in scanning the message by the user (manually)
                 printf("Enter desired cipher key ranging from 1-25 (Inclusive):");
                 scanf("%d", &Ekey);
                 if (Ekey <1 || Ekey >25) // this ensures the user has inputted a key from 1-25
@@ -92,6 +96,10 @@ int main() {
                 } 
             break;
             case 1:
+                scanf(" %[^\n]s", message); // scans the message written until a new line
+                printf("Encrypted message is: ");
+                printf("%s", message); // this prints the message itself
+                //this also works to check for any issue in scanning the message by the user (manually)
                 printf("Enter cipher key ranging from 1-25 (Inclusive):");
                 scanf("%d", &Dkey);
                 if (Dkey < 1 || Dkey > 25) // this ensures the user has inputted a key from 1-25
@@ -120,17 +128,24 @@ int main() {
 
                 break;
             case 2:
-                printf("Enter message to be encrypted: ");
-                scanf(" %[^\n]s", message);
-                printf("\nMessage is: %s\n", message);
-                printf("Enter substition of each letter in alphabetical order separated by a space: ");
-                scanf("%[^\n]s", sub);
-                for(int i =0; i<=26; i++){
+                printf("Enter message to be encrypted: \n");
+                scanf("%[^\n]s", message);
+                printf("Message is: %s\n", message);
+                printf("Enter substition of each letter from 'A'-'Z' separated by a space: ");
+                scanf(" %[^\n]s", sub);
+                for(int i=0; i<=26; i++){
+                    if(sub[i] <122 && sub[i] > 97){
+                        sub[i] = sub[i] - 32;
+                    }
+                }
+                printf("\n%s", sub);
+
+                    
                     // first convert sub to caps, then write what each letter becomes
                     //find 'A' use a loop to print a-z and sub next to it
                     //convert letters in message to letters from sub
                 
-                }
+                
 
             exit(0);
             case 3:

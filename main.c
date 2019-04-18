@@ -17,14 +17,20 @@ char EncryptRWithKey(char message[200]); //This is the prototype of the function
 
 
 int main() {
+    
+    //FILE *input;
+    //input = fopen("input.txt", "r");
+    
     int operator; //this is the integer of the key from 0-2 and determines what the program does
     int Ekey=0;
     int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
-    int n = 200; // n is length of the string (the message)
+    int n = 200;// n is length of the string (the message)
+
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
     //int i; // i will be the index key for the strings so that the letters can be altered
     char message[n]; 
+    char sub[26];
     printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by inputting the relating operator into the terminal:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
@@ -40,19 +46,19 @@ int main() {
     //This will decrypt a message using the users substitution index
     printf("To decrypt a substitution cipher without knowing the substition input '5' into the terminal.\n");
     //This is the hardest one to do with 26! possible combinations. BRUTE FORCE WILL NOT WORK!!!
-    //printf("Operator: ");
+    printf("Operator: ");
     scanf("%d", &operator); //This scans the input from the user
     
         if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
-            printf("\nOperator selected: %d\n", operator); // this prints the key selected by the user
+            printf("Operator selected: %d\n", operator); // this prints the key selected by the user
         else {
             printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message...
             exit(0); // ...and exits the program
         }
         if (operator == 0 || operator == 1) // this is for using the rotation cipher function
         { 
-            printf("Enter message: "); // the message is the one that needs to be encrypted or decyrpted 
+            //printf("Enter message: "); // the message is the one that needs to be encrypted or decyrpted 
             scanf(" %[^\n]s", message); // scans the message written until a new line
             printf("\nMessage is: %s\n", message); // this prints the message itself
             //this also works to check for any issue in scanning the message by the user (manually)
@@ -63,7 +69,7 @@ int main() {
                 scanf("%d", &Ekey);
                 if (Ekey <1 || Ekey >25) // this ensures the user has inputted a key from 1-25
                 {
-                    printf("INVALID KEY\n");   
+                    printf("\nINVALID KEY");   
                     exit(0); //if the user inputs outside of 1-25 the program exits
                 }
                 else 
@@ -114,6 +120,24 @@ int main() {
 
                 break;
             case 2:
+                printf("Enter message to be encrypted: ");
+                scanf(" %[^\n]s", message);
+                printf("\nMessage is: %s\n", message);
+                printf("Enter substition of each letter in alphabetical order separated by a space: ");
+                scanf("%[^\n]s", sub);
+                for(int i =0; i<=26; i++){
+                    // first convert sub to caps, then write what each letter becomes
+                    //find 'A' use a loop to print a-z and sub next to it
+                    //convert letters in message to letters from sub
+                
+                }
+
+            exit(0);
+            case 3:
+            exit(0);
+            case 4:
+            exit(0);
+            case(5):
             exit(0);
         }
 

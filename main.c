@@ -76,6 +76,8 @@ int main() {
                         }
                         if (message[i] <=90 && message[i] >= 65){
                             message[i] = message[i] + Ekey;
+                            if(message[i] >90)
+                                message[i]=message[i] - 26;
                         }
                     }
    
@@ -86,9 +88,9 @@ int main() {
             case 1:
                 printf("Enter cipher key ranging from 1-25 (Inclusive):");
                 scanf("%d", &Dkey);
-                if (Dkey <1 || Dkey >25) // this ensures the user has inputted a key from 1-25
+                if (Dkey < 1 || Dkey > 25) // this ensures the user has inputted a key from 1-25
                 {
-                    printf("INVALID KEY\n");   
+                    printf("\nINVALID KEY\n");   
                     exit(0); //if the user inputs outside of 1-25 the program exits
                 }
                 else 
@@ -101,6 +103,8 @@ int main() {
                         }
                         if (message[i] <=90 && message[i] >= 65){
                             message[i] = message[i] - Dkey;
+                            if(message[i] < 65)
+                               message[i]= message[i] + 26; 
                         }
                     }
    

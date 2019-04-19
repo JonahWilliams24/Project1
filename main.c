@@ -25,7 +25,6 @@ int main() {
     int Ekey=0;
     int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
     int n = 200;// n is length of the string (the message)
-
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
     //int i; // i will be the index key for the strings so that the letters can be altered
@@ -128,17 +127,20 @@ int main() {
 
                 break;
             case 2:
-                printf("Enter message to be encrypted: \n");
-                scanf("%[^\n]s", message);
-                printf("Message is: %s\n", message);
-                printf("Enter substition of each letter from 'A'-'Z' separated by a space: ");
-                scanf(" %[^\n]s", sub);
-                for(int i=0; i<=26; i++){
-                    if(sub[i] <122 && sub[i] > 97){
+                printf("Enter message to be encrypted: ");
+                scanf(" %[^\n]s", message);
+                printf("\nMesssage is: ");
+                printf("%s", message);
+
+                printf("\nEnter substition of each letter from 'A'-'Z' separated by a space: ");
+                //scanf(" %[^\n]s", sub);
+                for(int i=0; sub[i] != '\0'; ++i){
+                    if(sub[i] <=122 && sub[i] >= 97){
                         sub[i] = sub[i] - 32;
                     }
                 }
                 printf("\n%s", sub);
+                
 
                     
                     // first convert sub to caps, then write what each letter becomes

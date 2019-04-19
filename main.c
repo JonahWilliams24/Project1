@@ -29,7 +29,7 @@ int main() {
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
     //int i; // i will be the index key for the strings so that the letters can be altered
     char message[n]; 
-    char sub[26];
+    char sub[n];
     printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by inputting the relating operator into the 'input' file:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
@@ -50,7 +50,7 @@ int main() {
     
         if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
-            printf("Operator selected: %d\n", operator); // this prints the key selected by the user
+            printf("Operator selected: %d", operator); // this prints the key selected by the user
         else {
             printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message...
             exit(0); // ...and exits the program
@@ -65,7 +65,7 @@ int main() {
         switch(operator) {
             case 0:
                 scanf(" %[^\n]s", message); // scans the message written until a new line
-                printf("Message is: ");
+                printf("\nMessage is: ");
                 printf("%s", message); // this prints the message itself
                 //this also works to check for any issue in scanning the message by the user (manually)
                 printf("Enter desired cipher key ranging from 1-25 (Inclusive):");
@@ -96,7 +96,7 @@ int main() {
             break;
             case 1:
                 scanf(" %[^\n]s", message); // scans the message written until a new line
-                printf("Encrypted message is: ");
+                printf("\nEncrypted message is: ");
                 printf("%s", message); // this prints the message itself
                 //this also works to check for any issue in scanning the message by the user (manually)
                 printf("Enter cipher key ranging from 1-25 (Inclusive):");
@@ -121,25 +121,26 @@ int main() {
                         }
                     }
    
-                    printf("%s", message);
+                    printf("Message is: %s", message);
                     exit(0);
                 }
 
                 break;
             case 2:
-                printf("Enter message to be encrypted: ");
                 scanf(" %[^\n]s", message);
-                printf("\nMesssage is: ");
-                printf("%s", message);
-
-                printf("\nEnter substition of each letter from 'A'-'Z' separated by a space: ");
-                //scanf(" %[^\n]s", sub);
+                printf("\nMesssage is: %s", message);
+                printf("\nEnter substition of each letter from 'A'-'Z' with no spaces: ");
+                scanf("%s", sub);
                 for(int i=0; sub[i] != '\0'; ++i){
                     if(sub[i] <=122 && sub[i] >= 97){
                         sub[i] = sub[i] - 32;
                     }
                 }
                 printf("\n%s", sub);
+                printf("Encrypted message is:");
+                for(int i=0; sub[i] != '\0'; ++i ){
+                    
+                }
                 
 
                     

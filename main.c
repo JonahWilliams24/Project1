@@ -128,19 +128,132 @@ int main() {
                 break;
             case 2:
                 scanf(" %[^\n]s", message);
-                printf("\nMesssage is: %s", message);
-                printf("\nEnter substition of each letter from 'A'-'Z' with no spaces: ");
                 scanf("%s", sub);
+                printf("\nSubstitution in alphabetical order is: ");
                 for(int i=0; sub[i] != '\0'; ++i){
                     if(sub[i] <=122 && sub[i] >= 97){
                         sub[i] = sub[i] - 32;
                     }
                 }
-                printf("\n%s", sub);
-                printf("Encrypted message is:");
-                for(int i=0; sub[i] != '\0'; ++i ){
+                printf("%s\n", sub);
+                printf("Original message is:\n%s", message);
+                printf("Encrypted message is: \n");
+                for(int i=0; message[i] != '\0' && i <= 200; ++i ){
+                    if (message[i] <=122 && message[i] >=97){
+                            message[i] = message[i] - 32;
+                    }
                     
-                }
+                    switch(message[i]){
+                    case 65:
+                    message[i]=sub[0];
+                    printf("%c", message[i]);
+                    break;
+                    case 66:
+                    message[i]=sub[1];
+                    printf("%c", message[i]);
+                    break;
+                    case 67:
+                    message[i]=sub[2];
+                    printf("%c", message[i]);
+                    break;
+                    case 68:
+                    message[i]=sub[3];
+                    printf("%c", message[i]);
+                    break;
+                    case 69:
+                    message[i]=sub[4];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 70:
+                    message[i]=sub[5];
+                    printf("%c", message[i]);
+                    break;
+                    case 71:
+                    message[i]=sub[6];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 72:
+                    message[i]=sub[7];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 73:
+                    message[i]=sub[8];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 74:
+                    message[i]=sub[9];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 75:
+                    message[i]=sub[10];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 76:
+                    message[i]=sub[11];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 77:
+                    message[i]=sub[12];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 78:
+                    message[i]=sub[13];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 79:
+                    message[i]=sub[14];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 80:
+                    message[i]=sub[15];
+                    printf("%c", message[i]);
+                    break;                    
+                    case 81:
+                    message[i]=sub[16];
+                    printf("%c", message[i]);
+                    break;
+                    case 82:
+                    message[i]=sub[17];
+                    printf("%c", message[i]);
+                    break;
+                    case 83:
+                    message[i]=sub[18];
+                    printf("%c", message[i]);
+                    break;
+                    case 84:
+                    message[i]=sub[19];
+                    printf("%c", message[i]);
+                    break;
+                    case 85:
+                    message[i]=sub[20];
+                    printf("%c", message[i]);
+                    break;
+                    case 86:
+                    message[i]=sub[21];
+                    printf("%c", message[i]);
+                    break;
+                    case 87:
+                    message[i]=sub[22];
+                    printf("%c", message[i]);
+                    break;                 
+                    case 88:
+                    message[i]=sub[23];
+                    printf("%c", message[i]);
+                    break;
+                    case 89:
+                    message[i]=sub[24];
+                    printf("%c", message[i]);
+                    break;
+                    case 90:
+                    message[i]=sub[25];
+                    printf("%c", message[i]);
+                    break;
+                    default:
+                    printf("%c", message[i]);                    
+                    }
+            }
+
+
                 
 
                     
@@ -158,6 +271,8 @@ int main() {
             case(5):
             exit(0);
         }
+    
+
 
         
     

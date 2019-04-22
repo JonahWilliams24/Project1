@@ -29,7 +29,7 @@ int main() {
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
     //int i; // i will be the index key for the strings so that the letters can be altered
     char message[n]; 
-    char sub[n];
+    char sub[55];
     printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by typing the relating operator into 'input' on the first line:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
@@ -125,6 +125,10 @@ int main() {
                 printf("Enter substitution key in alphabetical order with no spaces onto line 3 of 'input'.");
                 scanf(" %[^\n]s", message);
                 scanf("%s", sub);
+                if(sub[26] != '\0'){
+                    printf("\nERROR TOO MANY CHARACTERS\nSubstitution requires 26 unique letters in order of substitution desired");
+                    exit(0);
+                }
                 printf("\nSubstitution in alphabetical order is: ");
                 for(int i=0; sub[i] != '\0'; ++i){
                     if(sub[i] <=122 && sub[i] >= 97){
@@ -254,6 +258,10 @@ int main() {
                 printf("Enter substitution key in alphabetical order with no spaces onto line 3 of 'input'.");
                 scanf(" %[^\n]s", message);
                 scanf("%s", sub);
+                if(sub[26] != '\0'){
+                    printf("\nERROR TOO MANY CHARACTERS\nSubstitution requires 26 unique letters in order of substitution desired");
+                    exit(0);
+                }
                 printf("\nSubstitution in alphabetical order is: ");
                 for(int i=0; sub[i] != '\0'; ++i){
                     if(sub[i] <=122 && sub[i] >= 97){

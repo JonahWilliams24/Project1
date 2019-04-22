@@ -27,7 +27,7 @@ int main() {
     int n = 200;// n is length of the string (the message)
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
-    //int i; // i will be the index key for the strings so that the letters can be altered
+    //int x=0; // x will be used in the substitution cipher
     char message[n]; 
     char sub[55];
     printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
@@ -271,119 +271,146 @@ int main() {
                 printf("%s\n", sub);
                 printf("Original message is:\n%s", message);
                 printf("Decrypted message is: \n");
-                for(int i=0; message[i] != '\0' && i <= 200; ++i ){
+                for(int i = 0; message[i] != '\0' && i <= 200; ++i ){
                     if (message[i] <=122 && message[i] >=97){
                             message[i] = message[i] - 32;
                     }
                     
                     switch(message[i]){
                     case 65:
-                    message[i]=sub[0];
+                    if(message[i]==sub[0])
+                        message[i] = 65;
                     printf("%c", message[i]);
                     break;
                     case 66:
-                    message[i]=sub[1];
+                    if(message[i]==sub[1])
+                        message[i] = 66;
                     printf("%c", message[i]);
                     break;
                     case 67:
-                    message[i]=sub[2];
+                    if(message[i]==sub[2])
+                        message[i] = 67;
                     printf("%c", message[i]);
                     break;
                     case 68:
-                    message[i]=sub[3];
+                    if(message[i]==sub[3])
+                        message[i] = 68;
                     printf("%c", message[i]);
                     break;
                     case 69:
-                    message[i]=sub[4];
+                    if(message[i]==sub[4])
+                        message[i] = 69;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 70:
-                    message[i]=sub[5];
+                    if(message[i]==sub[5])
+                        message[i] = 70;
                     printf("%c", message[i]);
                     break;
                     case 71:
-                    message[i]=sub[6];
+                    if(message[i]==sub[6])
+                        message[i] = 71;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 72:
-                    message[i]=sub[7];
+                    if(message[i]==sub[7])
+                        message[i] = 72;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 73:
-                    message[i]=sub[8];
+                    if(message[i]==sub[8])
+                        message[i] = 73;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 74:
-                    message[i]=sub[9];
+                    if(message[i]==sub[9])
+                        message[i] = 74;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 75:
-                    message[i]=sub[10];
+                    if(message[i]==sub[10])
+                        message[i] = 75;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 76:
-                    message[i]=sub[11];
+                    if(message[i]==sub[11])
+                        message[i] = 76;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 77:
-                    message[i]=sub[12];
+                    if(message[i]==sub[12])
+                        message[i] = 77;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 78:
-                    message[i]=sub[13];
+                    if(message[i]==sub[13])
+                        message[i] = 78;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 79:
-                    message[i]=sub[14];
+                    if(message[i]==sub[14])
+                        message[i] = 79;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 80:
-                    message[i]=sub[15];
+                    if(message[i]==sub[15])
+                        message[i] = 80;
                     printf("%c", message[i]);
-                    break;                    
+                    break;
                     case 81:
-                    message[i]=sub[16];
+                    if(message[i]==sub[16])
+                        message[i] = 81;
                     printf("%c", message[i]);
                     break;
                     case 82:
-                    message[i]=sub[17];
+                    if(message[i]==sub[17])
+                        message[i] = 82;
                     printf("%c", message[i]);
                     break;
                     case 83:
-                    message[i]=sub[18];
+                    if(message[i]==sub[18])
+                        message[i] = 83;
                     printf("%c", message[i]);
                     break;
                     case 84:
-                    message[i]=sub[19];
+                    if(message[i]==sub[19])
+                        message[i] = 84;
                     printf("%c", message[i]);
                     break;
                     case 85:
-                    message[i]=sub[20];
+                    if(message[i]==sub[20])
+                        message[i] = 85;
                     printf("%c", message[i]);
                     break;
                     case 86:
-                    message[i]=sub[21];
+                    if(message[i]==sub[21])
+                        message[i] = 86;
                     printf("%c", message[i]);
                     break;
                     case 87:
-                    message[i]=sub[22];
+                    if(message[i]==sub[22])
+                        message[i] = 87;
                     printf("%c", message[i]);
-                    break;                 
+                    break;
                     case 88:
-                    message[i]=sub[23];
+                    if(message[i]==sub[23])
+                        message[i] = 88;
                     printf("%c", message[i]);
                     break;
                     case 89:
-                    message[i]=sub[24];
+                    if(message[i]==sub[24])
+                        message[i] = 89;
                     printf("%c", message[i]);
                     break;
                     case 90:
-                    message[i]=sub[25];
+                    if(message[i]==sub[25])
+                        message[i] = 90;
                     printf("%c", message[i]);
-                    break;
+                    break;                    
                     default:
                     printf("%c", message[i]);                    
                     }
+
             }             
                 
             exit(0);

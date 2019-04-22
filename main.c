@@ -1,11 +1,14 @@
 /* This program is designed so the user can either input a message they want to be encrypted 
 or enter an encrypted message they wish to be decrypted. The program requires an input from
 the user to encrypt or decrypt and the message itself*/
+
 // Use terminal input via "./a.out"
 
 
-//Make a length constraint 
-
+//For deciphering rotational without key find most common letter and assume it's 'E' keep getting input from user until message
+// is deciphered if E is not most common
+//Do this by determining how far 'E' is from 'A' and using that number as the key to decipher
+//Making the rotational cipher into a function would work well as it is the same procress once key is guessed
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,10 +27,10 @@ int main() {
     int operator; //this is the integer of the key from 0-2 and determines what the program does
     int Ekey=0;
     int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
-    int n = 200;// n is length of the string (the message)
+    int n = 200; // n is length of the string (the message)
+    int x=0; // x will be used in the substitution cipher 
     //all these int variables can be written on the same line, I chose not to so I could explain their use
-    //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
-    int x=0; // x will be used in the substitution cipher
+    //Also it is easy to use '//' to take out a single int when its not being used i.e. in debugging of specific areas 
     char message[n]; 
     char sub[55];
     char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -42,7 +45,7 @@ int main() {
     //option 3 is for the user to encrpt using a substitution where they can choose which letters are changed to what
     printf("To decrypt a message with a substitution cipher knowing the substitution used, type '3' into the 'input' file.\n");
     //this is where the program will attempt to decipher the message of a rotational cipher without knowing the key
-    printf("To decrpyt a message with a substition cipher knowing the substitution used, type '4' into the 'input' file.\n");
+    printf("To decrpyt a message with a rotation cipher without the key, type '4' into the 'input' file.\n");
     //This will decrypt a message using the users substitution index
     printf("To decrypt a substitution cipher without knowing the substition type '5' into the input file.\n");
     //This is the hardest one to do with 26! possible combinations. BRUTE FORCE WILL NOT WORK!!!
@@ -441,6 +444,10 @@ int main() {
                 
             exit(0);
             case 4:
+                printf("Enter message to be deciphered: ");
+                scanf("%s", message);
+                
+
             exit(0);
             case(5):
             exit(0);

@@ -27,10 +27,11 @@ int main() {
     int n = 200;// n is length of the string (the message)
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out an int when its not being used i.e. in debugging of specific areas
-    //int x=0; // x will be used in the substitution cipher
+    int x=0; // x will be used in the substitution cipher
     char message[n]; 
     char sub[55];
-    printf("\nWelcome to the cipher Code Program!\n"); //This prints the title card
+    char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    printf("\nWelcome to the Cipher Code Program!\n"); //This prints the title card
     printf("Select the required function by typing the relating operator into 'input' on the first line:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
     printf("To encrypt a message using a rotational cipher, with a desired key, type '0' into the 'input' file.\n"); 
@@ -278,135 +279,160 @@ int main() {
                     
                     switch(message[i]){
                     case 65:
-                    if(message[i]==sub[0])
-                        message[i] = 65;
-                    printf("%c", message[i]);
-                    break;
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
+                    break;  
                     case 66:
-                    if(message[i]==sub[1])
-                        message[i] = 66;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 67:
-                    if(message[i]==sub[2])
-                        message[i] = 67;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 68:
-                    if(message[i]==sub[3])
-                        message[i] = 68;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 69:
-                    if(message[i]==sub[4])
-                        message[i] = 69;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 70:
-                    if(message[i]==sub[5])
-                        message[i] = 70;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 71:
-                    if(message[i]==sub[6])
-                        message[i] = 71;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 72:
-                    if(message[i]==sub[7])
-                        message[i] = 72;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 73:
-                    if(message[i]==sub[8])
-                        message[i] = 73;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 74:
-                    if(message[i]==sub[9])
-                        message[i] = 74;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 75:
-                    if(message[i]==sub[10])
-                        message[i] = 75;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 76:
-                    if(message[i]==sub[11])
-                        message[i] = 76;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 77:
-                    if(message[i]==sub[12])
-                        message[i] = 77;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 78:
-                    if(message[i]==sub[13])
-                        message[i] = 78;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 79:
-                    if(message[i]==sub[14])
-                        message[i] = 79;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 80:
-                    if(message[i]==sub[15])
-                        message[i] = 80;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 81:
-                    if(message[i]==sub[16])
-                        message[i] = 81;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 82:
-                    if(message[i]==sub[17])
-                        message[i] = 82;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 83:
-                    if(message[i]==sub[18])
-                        message[i] = 83;
-                    printf("%c", message[i]);
-                    break;
-                    case 84:
-                    if(message[i]==sub[19])
-                        message[i] = 84;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
+                    break;case 84:
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 85:
-                    if(message[i]==sub[20])
-                        message[i] = 85;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 86:
-                    if(message[i]==sub[21])
-                        message[i] = 86;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 87:
-                    if(message[i]==sub[22])
-                        message[i] = 87;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 88:
-                    if(message[i]==sub[23])
-                        message[i] = 88;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 89:
-                    if(message[i]==sub[24])
-                        message[i] = 89;
-                    printf("%c", message[i]);
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
                     break;
                     case 90:
-                    if(message[i]==sub[25])
-                        message[i] = 90;
-                    printf("%c", message[i]);
-                    break;                    
+                    for(x=0; x<= 26; x++){
+                        if(sub[x] == message[i])
+                            printf("%c", alphabet[x]);
+                    }
+                    break;
                     default:
                     printf("%c", message[i]);                    
                     }

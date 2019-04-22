@@ -51,16 +51,16 @@ int main() {
     
         if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
-            printf("Operator selected: %d", operator); // this prints the key selected by the user
+            printf("Operator selected: %d\n", operator); // this prints the key selected by the user
         else {
-            printf("\nERROR INVALID OPERATOR\n"); // Any other input prints the error message...
+            printf("ERROR INVALID OPERATOR\n"); // Any other input prints the error message...
             exit(0); // ...and exits the program
         }
        
         switch(operator) {
             case 0:
                 scanf(" %[^\n]s", message); // scans the message written until a new line
-                printf("\nMessage is: ");
+                printf("Message is: ");
                 printf("%s", message); // this prints the message itself
                 //this also works to check for any issue in scanning the message by the user (manually)
                 printf("Enter desired cipher key ranging from 1-25 (Inclusive):");
@@ -80,11 +80,11 @@ int main() {
                         }
                         if (message[i] <=90 && message[i] >= 65){
                             message[i] = message[i] + Ekey;
-                            if(message[i] >90)
-                                message[i]=message[i] - 26;
+                            if(message[i] >90) //this makes the letters rotate around instead of continuing
+                                message[i]=message[i] - 26; // by minusing 26 if the ascii value exceeds 90
                         }
                     }
-   
+                    printf("Encrypted message is: ");
                     printf("%s", message);
                     exit(0);
                 } 
@@ -127,7 +127,7 @@ int main() {
                 scanf(" %[^\n]s", message);
                 scanf("%s", sub);
                 if(sub[26] != '\0'){
-                    printf("\nERROR TOO MANY CHARACTERS\nSubstitution requires 26 unique letters in order of substitution desired");
+                    printf("\nERROR\n-Substitution requires 26 unique letters in alphabetical order of substitution desired.");
                     exit(0);
                 }
                 printf("\nSubstitution in alphabetical order is: ");

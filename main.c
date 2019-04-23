@@ -28,7 +28,7 @@ int main() {
     int Ekey=0;
     int Dkey=0; //Dkey is fot the decryption key, default is 0 (no rotation)
     int n = 200; // n is length of the string (the message)
-    int x=0; // x will be used in the substitution cipher 
+    int x=0;// x will be used in the substitution cipher
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out a single int when its not being used i.e. in debugging of specific areas 
     char message[n]; 
@@ -56,7 +56,7 @@ int main() {
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
             printf("Operator selected: %d\n", operator); // this prints the key selected by the user
         else {
-            printf("ERROR INVALID OPERATOR\n"); // Any other input prints the error message...
+            printf("**ERROR** \nINVALID OPERATOR\n"); // Any other input prints the error message...
             exit(0); // ...and exits the program
         }
        
@@ -130,7 +130,7 @@ int main() {
                 scanf(" %[^\n]s", message);
                 scanf("%s", sub);
                 if(sub[26] != '\0'){
-                    printf("\nERROR\n-Substitution requires 26 unique letters in alphabetical order of substitution desired.");
+                    printf("\n**ERROR**\n-Substitution requires 26 unique letters in alphabetical order of substitution desired.");
                     exit(0);
                 }
                 printf("\nSubstitution in alphabetical order is: ");
@@ -258,12 +258,12 @@ int main() {
             }             
             exit(0);
             case 3:
-                printf("\nEnter message to be decrypted onto line 2 of 'input'.\n");
+                printf("Enter message to be decrypted onto line 2 of 'input'.\n");
                 printf("Enter substitution key in alphabetical order with no spaces onto line 3 of 'input'.");
                 scanf(" %[^\n]s", message);
                 scanf("%s", sub);
                 if(sub[26] != '\0'){
-                    printf("\nERROR TOO MANY CHARACTERS\nSubstitution requires 26 unique letters in order of substitution desired");
+                    printf("\n**ERROR**\nSubstitution requires 26 unique letters in alphabetical order of substitution desired.");
                     exit(0);
                 }
                 printf("\nSubstitution in alphabetical order is: ");
@@ -444,9 +444,14 @@ int main() {
                 
             exit(0);
             case 4:
-                printf("Enter message to be deciphered: ");
-                scanf("%s", message);
-                
+                printf("Enter message to be deciphered: \n");
+                scanf(" %[^\n]s", message);
+                printf("Message is: %s \n", message);
+                for (int i=0; i<200 && message[i] != '\0'; i++){
+                        if (message[i] <=122 && message[i] >=97){
+                            message[i] = message[i] - 32;
+                        }
+                    }
 
             exit(0);
             case(5):

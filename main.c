@@ -439,12 +439,24 @@ int main() {
             case 4:
                 printf("Enter message to be deciphered: \n");
                 scanf(" %[^\n]s", message);
-                printf("Message is: %s \n", message);
+                printf("Encrypted message is: %s \n", message);
                 for(int i=0; i<n && message[i] != '\0'; i++){
                     if(message[i] <=122 && message[i] >=97){
                         message[i] = message[i] - 32;
                     }
+                    if(x == 1 && message[i] == 32){
+                        printf("GAY\n");
+                        x = 0;
+                    }
+                    if(message[i] == 32)
+                        x++;   
+                    //if(x >= 1 && message[i] <= 90 && message[i] >= 65)
+                        
+                    
+                    //else x=0;
+
                 }
+                printf("%d\n", x);
                 printf("Deciphered message is: ");
                 printf("%s", message);
             exit(0);

@@ -309,9 +309,12 @@ int main() {
                     // Difficult process to explain essentially when a letter is read from 'message' it is tested to find where that letter is located...
                     //... in 'sub' and replaced with the letter in alphabet that corresponds to it
                     //'x' is used as a counter to find where the letters line up so they can be swapped
+                    //When an 'A' is scanned in 'message' it is compared to 'sub' and the location in the array of 'sub' is compared...
+                    //... to the location in 'alphabet' and replaced with the letter there i.e. if 'A' is the 6th letter in 'sub'...
+                    //... it is replaced with the 6th letter in 'alphabet' (alphabet[5] which is 'E') and then printed
                     break; //This stops the switch statement from contiuing when an 'A' is read
                     case 66:
-                    for(x=0; x<= 26; x++){
+                    for(x=0; x<= 26; x++){ //the 'for' loop counts
                         if(sub[x] == message[i])
                             printf("%c", alphabet[x]);
                     }

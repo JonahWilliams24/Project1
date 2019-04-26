@@ -16,18 +16,13 @@ a rotational cipher message or a substitution message.*/
 #include <stdlib.h>
 
 
-char EncryptRWithKey(char message[200]); //This is the prototype of the function that will rotationally encrpyt a message
-//char DecryptRWithKey(char[n]); //Prototpye for decrypting a rotated message when key is known
-//char DecryptW/okey(char[n]); // prototype for decrpyting without key (this will be difficult to code)
-
-
 int main() {
         
     int operator; //this is the integer of the key from 0-2 and determines what the program does
-    int key=0; //key is the encryption key where the default is 0 (no rotation)
-    //int key=0; //key is fot the decryption key, default is 0 (no rotation)
-    int n = 500; // n is length of the string (the message), changing the value of n here will alter how long the strings can be
+    int key=0; //key is the encryption and decryption key where the default is 0 (no rotation)
+    int n = 1024; // n is length of the string (the message), changing the value of n here will alter how long the strings can be
     int x=0;// x will be used in the substitution cipher
+    int S=0; //S is used during the decryption to test if a condition was met in a 'for' loop outside the loop 
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out a single int when its not being used i.e. in debugging of specific areas 
     char message[n]; //This is the array of the string which the user inputs to be altered
@@ -37,6 +32,7 @@ int main() {
     //These printf statements provide the user with a menu so they can decide what they want to do
     
     printf("\nWelcome to the Cipher Code Program!\n"); //This prints the title card
+    printf("-Please use 'INPUT READER' run command after entering anything new into 'input'");
     printf("\nSelect the required function by typing the relating operator into 'input' on the first line:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
     printf("To encrypt a message using a rotational cipher, with a desired key, type '0' into the 'input' file.\n"); 
@@ -462,36 +458,53 @@ int main() {
                             printf("%c", alphabet[x]);
                     }
                     break;
-                    default: //The default statement prints everything else that is not a capital letter
+                    default: //The default statement prints everything else that is not a capital letter, one character at a time
                     printf("%c", message[i]);                    
                     }
 
             }             
                 
             exit(0);
-            case 4:
-                printf("Enter message to be deciphered: \n");
-                scanf(" %[^\n]s", message);
-                printf("Encrypted message is: %s \n", message);
-                for(int i=0; i<n && message[i] != '\0'; i++){
+            case 4: //case 4 is for decrypting a rotational message without being given a key
+                printf("Enter message to be deciphered: \n"); //This is a prompt for the user
+                scanf(" %[^\n]s", message); //This scans the message until a new line character is read
+                printf("Encrypted message is: %s \n", message); //This prints the string entered by the user
+                for(int i=0; i<n && message[i] != '\0'; i++){ //this 'for' loop converts any lowercase letters to capital letters
                     if(message[i] <=122 && message[i] >=97){
                         message[i] = message[i] - 32;
                     }
-                    if(x == 1 && message[i] == 32){
-                        printf("GAY\n");
-                        x = 0;
+                    if(message[i] == 32 && S != 1000){
+                        x=i;
+                        while(x<(i+2)){
+                            x++;
+                            if(message[x] == 32){
+                                S=1000;
+                            }
+                        }
                     }
-                    if(message[i] == 32)
-                        x++;   
-                    //if(x >= 1 && message[i] <= 90 && message[i] >= 65)
                         
                     
-                    //else x=0;
-
                 }
-                printf("%d\n", x);
-                printf("Deciphered message is: ");
-                printf("%s", message);
+                if(S==1000){
+                    printf("Single letter word/s found\n");
+                    printf("Assume this is 'A'\n");
+                    x--;
+                    key = message[x] - 65;
+                    printf("Key is: %d\n", key);
+                    for (int i=0; i<n && message[i] != '\0'; i++){
+                        //this creates a 'for' loop which reads each character one by one
+                        if (message[i] <=90 && message[i] >= 65){ //this 'if' statement checks if any character is a capital letter...
+                            message[i] = message[i] - key; //... then rotates it according to the key
+                            if(message[i] < 65) //if a character goes past '65'... 
+                               message[i] = message[i] + 26; //... 26 is added to loop it back
+                        }
+                    }
+                    //Only letters are altered in this decryption, first converted to capital letters then rotated
+                    //All other characters are left unaffected
+                    printf("Deciphered message is: %s", message); //This prints the final message...
+                    
+                }
+                
             exit(0);
             case(5):
             exit(0);
@@ -503,17 +516,3 @@ int main() {
     
     return 0;
 }
-
-
-char EncryptRWithKey(char message[]) {
-    //message[1] = 'A';
-    //printf("%s", message);
-    return 0;
-}
-
-
-
-
-
-
-

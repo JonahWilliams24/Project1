@@ -23,6 +23,7 @@ int main() {
     int n = 1024; // n is length of the string (the message), changing the value of n here will alter how long the strings can be
     int x=0;// x will be used in the substitution cipher
     int S=0; //S is used during the decryption to test if a condition was met in a 'for' loop outside the loop 
+    int test=200; //This is for the user to try another key in the rotational decipher 
     //all these int variables can be written on the same line, I chose not to so I could explain their use
     //Also it is easy to use '//' to take out a single int when its not being used i.e. in debugging of specific areas 
     char message[n]; //This is the array of the string which the user inputs to be altered
@@ -468,7 +469,7 @@ int main() {
             case 4: //case 4 is for decrypting a rotational message without being given a key
                 printf("Enter message to be deciphered: \n"); //This is a prompt for the user
                 scanf(" %[^\n]s", message); //This scans the message until a new line character is read
-                printf("Encrypted message is: %s \n", message); //This prints the string entered by the user
+                printf("Encrypted message is: %s", message); //This prints the string entered by the user
                 for(int i=0; i<n && message[i] != '\0'; i++){ //this 'for' loop converts any lowercase letters to capital letters
                     if(message[i] <=122 && message[i] >=97){
                         message[i] = message[i] - 32;
@@ -487,7 +488,7 @@ int main() {
                 }
                 if(S==1000){
                     printf("Single letter word/s found\n");
-                    printf("Assume this is 'A'\n");
+                    printf("Assume this is 'A':\n");
                     x--;
                     key = message[x] - 65;
                     printf("Key is: %d\n", key);
@@ -502,9 +503,43 @@ int main() {
                     //Only letters are altered in this decryption, first converted to capital letters then rotated
                     //All other characters are left unaffected
                     printf("Deciphered message is: %s", message); //This prints the final message...
-                    
+                    printf("\nIf this message is incorrect enter '1' onto line 3 of 'input'\n");
+                    scanf("%d", &test);
+                    if(test == 1){
+                        key = message[x] - 73;
+                        if(key < 0){
+                            key = key +26;
+                        }
+                        printf("Assume the single letter word is now 'I':\n");
+                        printf("Key is: %d \n", key);
+                        for (int i=0; i<n && message[i] != '\0'; i++){
+                            //this creates a 'for' loop which reads each character one by one
+                            if (message[i] <=90 && message[i] >= 65){ //this 'if' statement checks if any character is a capital letter...
+                            message[i] = message[i] - key; //... then rotates it according to the key
+                            if(message[i] < 65) //if a character goes past '65'... 
+                               message[i] = message[i] + 26; //... 26 is added to loop it back
+                            }
+                        }
+                        printf("Deciphered message is: %s", message);
+                    }
+                    else exit(0);
                 }
-                
+                else {
+                    while(key<25){
+                        key++;
+                        printf("Key: %d- ", key);
+                        for(int i=0; i<n && message[i] != '\0'; i++){
+                            //this creates a 'for' loop which reads each character one by one
+                            if (message[i] <=90 && message[i] >= 65){ //this 'if' statement checks if any character is a capital letter...
+                                message[i] = message[i] - key; //... then rotates it according to the key
+                            if(message[i] < 65) //if a character goes past '65'... 
+                               message[i] = message[i] + 26; //... 26 is added to loop it back
+                            }
+                            printf("%c", message[i]);
+                        }
+                       // printf("Deciphered message is: %s", message);
+                    }
+                }
             exit(0);
             case(5):
             exit(0);
@@ -516,13 +551,4 @@ int main() {
     
     return 0;
 }
-
-
-
-
-
-
-
-
-
 

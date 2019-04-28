@@ -5,6 +5,8 @@ a rotational cipher message or a substitution message.*/
 
 // Use terminal input via "./a.out" or custom run command
 
+//nwlrbmqhcdazokyitxjfegpuvs
+
 //The hardest area of code to understand the function of is the decrpytion of the substitution cipher, as the process is confusing to grasp...
 //... let alone the code used. The hardest part to code was to find a single letter word in 'message'.
 

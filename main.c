@@ -1,4 +1,4 @@
- /*This program is designed so the user can either input a message they want to be encrypted 
+/*This program is designed so the user can either input a message they want to be encrypted 
 or enter an encrypted message they wish to be decrypted. The program requires an input from
 the user to encrypt or decrypt and the message itself. The program can only encrypt or decrypt
 a rotational cipher message or a substitution message.*/
@@ -20,27 +20,36 @@ a rotational cipher message or a substitution message.*/
 
 //#define int n=1024;
 
-void RCipher(int key, char []);
+void RCipher(int key, char []); //This is the prototype of the function which encrypts and decrypts text, the program will take a value...
+//... for 'key' which will be an 'int' from 1-25 and an array of type 'char' which will be the message the user inputs. '[]' means an...
+//... array of a certain type, in this instance an array of 'char' is a string of text. The function is has no return value, it is...
+//... a void function and will not return any values, it prints everything directly from the function itself
 
 int main() {
         
-    int operator; //this is the integer of the key from 0-2 and determines what the program does
-    int key=0; //key is the encryption and decryption key where the default is 0 (no rotation)
-    int n = 1024; // n is length of the string (the message), changing the value of n here will alter how long the strings can be
-    int x=0;// x will be used in the substitution cipher
-    int S=0; //S is used during the decryption to test if a condition was met in a 'for' loop outside the loop 
-    int test=200; //This is for the user to try another key in the rotational decipher 
-    int count=0; //This is used to make sure that 'sub' meets the right value 
-    //all these int variables can be written on the same line, I chose not to so I could explain their use
-    //Also it is easy to use '//' to take out a single int when its not being used i.e. in debugging of specific areas 
-    char message[n]; //This is the array of the string which the user inputs to be altered
-    char sub[27]; //this is the substitution array, where the user inputs the substition desired for encryption or decryption
+    int operator=6; //this is the integer of the programs function from 0-5 and determines what the program does, the default value for...
+    //... 'operator' is '6' which will produce an error message unless the user enters a new integer for 'operator'
+    int key=0; //key is the encryption and decryption key where the default is 0 (no rotation), 'key' will be alteredd according to the users input
+    int n=1024; // n is length of the string (the message), changing the value of n here will alter how long the strings can be throughout...
+    //... the entire program. (currently set to 1024 as this is useful for very long messages but not optimal for short ones)
+    int x=0;// x will be used in the substitution cipher as a way to count through the messages. Also used in rotational cipher w/out key
+    int S=0; //S is used during the decryption to test if a condition was met in a 'for' loop outside of the loop itself. S is set to '0' but...
+    //... it could be any value that isnt '1000'
+    int test=200; //This is for the user to try another key in the rotational decipher if the first message is not correct, test can be anything...
+    //... aside from 1
+    int count=0; //This is used to make sure that 'sub' meets the right value by making a running total of their ascii value, this must be initially '0'
+    //all these int variables can be written on the same line, I chose not to so I could explain their use individually
+    //Also it is easy to use '//' to comment out a single int when its not being used i.e. in debugging of specific areas 
+    char message[n]; //This is the array of the string which the user inputs to be altered, the value for 'n' can be altered from above. This...
+    //... declaration must be below the declaration of 'n' otherwise the program will not compile
+    char sub[27]; //this is the substitution array, where the user inputs the substition desired for encryption or decryption, 'sub' only...
+    //... needs to use 26 characters but the 27th character will be '\0' the null 0 which is useful for testing if the input is correct
     char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //This is the alphabet and is used to decipher substitution messages
     
     //These printf statements provide the user with a menu so they can decide what they want to do
     
     printf("\nWelcome to the Cipher Code Program!\n"); //This prints the title card
-    printf("-Please use 'INPUT READER' run command after entering anything new into 'input'");
+    printf("-Please use 'INPUT READER' run command after entering anything new into 'input'"); //This is an instruction for the user
     printf("\nSelect the required function by typing the relating operator into 'input' on the first line:\n\n"); 
     //this prompts the user to type the operator required so they can choose the function they want
     printf("To encrypt a message using a rotational cipher, with a desired key, type '0' into the 'input' file.\n"); 
@@ -56,14 +65,15 @@ int main() {
     printf("To decrypt a message without knowing the substition, type '5' into the input file.\n");
     //This is the hardest one to do with 26! possible combinations. BRUTE FORCE WILL NOT WORK!!!
     //This is in the menu however the program is currently unable to decipher a message without a substitution
-    //printf("Operator: \n");
     scanf("%d", &operator); //This scans the input from the user
     
     if (operator==0 || operator==1 || operator==2 || operator==3 || operator==4 || operator==5) 
         // "||" means OR therefore this tests to see if the key is properly inputted in the range desired
+        //This 'if' statement could also use 'if(operator >=0 && <= 5)' but the OR statements were used to demonstrate that...
+        //there is often more than one way of doing something. Since operator is an 'int' it must be an int from 0-5
         printf("Operator selected: %d\n", operator); // this prints the key selected by the user, useful to make sure the code works
     else {
-        printf("**ERROR** \nINVALID OPERATOR\n"); // Any other input prints the error message...
+        printf("**ERROR** \nINVALID OPERATOR\n"); // Any other input for 'operator' prints the error message...
         exit(0); // ...and exits the program
     }
        
@@ -474,7 +484,8 @@ int main() {
                 //Any other possibility such as no one letter words will not work with this program
                 printf("Enter message to be deciphered: \n"); //This is a prompt for the user
                 scanf(" %[^\n]s", message); //This scans the message until a new line character is read
-                printf("Encrypted message is: %s", message); //This prints the string entered by the user
+                printf("Encrypted message is: "); //This prints the string entered by the user
+                printf("%s", message);
                 for(int i=0; i<n && message[i] != '\0'; i++){ //this 'for' loop converts any lowercase letters to capital letters
                     if(message[i] <=122 && message[i] >=97){ //This converts any lowercase letters to uppercase
                         message[i] = message[i] - 32;
@@ -502,37 +513,26 @@ int main() {
                     printf("Assume this is 'A':\n"); //... it is assumed to be 'A'
                     x--; //x is decremented here as its old value was the value after the one letter word and the character is what we need
                     key = message[x] - 65; //The key is then changed to the value of the distance from the value of the one letter word
-                    printf("Key is: %d\n", key); //This prints the key to ensure no errors in calculating the key
                     //The positive value for key is printed first so the user knows the key used to rotate the text
                     key = key*-1; //The value for key is made negative as there is only one function for encryption and decryption...
-                    //... where the value for 'key' is either added or subtracted
-                    //This means that if the one letter word in 'message' is 'B' then key becomes 66-65 which is 1, meaning the original...
-                    //... message was rotated using a key of 1, if the first one letter word was an 'A' in 'message'
+                    //... where the value for 'key' is either added or subtracted depending on the function required
                     RCipher(key, message); //This is the function which encrypts and decrypts messages
                     //This function passes the value of 'key' and 'messsge' which the user inputted...
                     //... the function is a void type and only prints the message from there directly not returning any values
-                    /*for (int i=0; i<n && message[i] != '\0'; i++){
-                        //this creates a 'for' loop which reads each character one by one
-                        if (message[i] <=90 && message[i] >= 65){ //this 'if' statement checks if any character is a capital letter...
-                            message[i] = message[i] - key; //... then rotates it according to the key
-                            if(message[i] < 65) //if a character goes past '65'... 
-                               message[i] = message[i] + 26; //... 26 is added to loop it back
-                        }
-                    }*/
-                    //Only letters are altered in this decryption: first converted to capital letters then rotated
+                    //Only letters are altered in decryption: first converted to capital letters then rotated
                     //All other characters are left unaffected
-                    //printf("Deciphered message is: %s", message); //This prints the final message...
+                    //printf("Deciphered message is: %s", message); //This prints the final message
                     printf("\nIf this message is incorrect enter '1' onto line 3 of 'input'\n"); //This is for the user to determine whether or not...
                     //... the single letter word was 'A'
                     scanf("%d", &test);
                     if(test == 1){ //If the word was not 'A' then the same process as before occus however now it assumes the one letter word is 'I'
+                        //message[x] = message[x] - key;
                         key = message[x] - 73; //'73' is the ascii value for 'I' and this determines the distance between the character and 'I'...
                         //... and then reassigning 'key' to this value
-                        if(key <= 0){ //if key goes below '1' it needs to loop back to have a positive value for 'key'
+                        if(key < 1){ //if key goes below '1' it needs to loop back to have a positive value for 'key'
                             key = key + 26; //This causes the rotation of key if 'message[x]' is smaller than '73' so there is no negative value for key
                         }
                         printf("Assume the single letter word is now 'I':\n"); //This is so the user knows what is happening
-                        printf("Key is: %d \n", key); //This prints the new key
                         for (int i=0; i<n && message[i] != '\0'; i++){
                             //this creates a 'for' loop which reads each character one by one
                             if (message[i] <=90 && message[i] >= 65){ //this 'if' statement checks if any character is a capital letter...
@@ -546,22 +546,25 @@ int main() {
                     else exit(0); //If the user does not enter '1' onto line 3 of 'input' the program will exit
                 }
                 else {
-                    printf("\nPROGRAM FAILED TO DECIPHER MESSAGE\n");
-                    printf("-recommend testing keys 1-25 with operator 1");
-                    //Ran out of time to come up with another way to decrypt without key, for rotational cipher there is only 25 keys so testing each key...
-                    //... would not take that long with this program
-                    exit(0); //The program will then sadly exit upon failing to decrpyt a message
+                    printf("\n");
+                    key=-1; //This resets the value of 'key' to change 'message' by one value every loop
+                    x=1; //'x' is used in place of key as key cannot change in this 'for' loop otherwise the counter will not properly function
+                    for(count=0; count<25; count++){
+                        printf("With a key of %d - ", x); //This is so the user knows what the key was for the message
+                        x++; //This increments 'x' for every loop
+                        RCipher(key, message); //This completes the function 'RCipher' once per loop, altering message once per loop
+                    }
                 }
             exit(0);
             case(5):
-                printf("ERROR\nI did not have time to even attempt this part :'(");
+                printf("ERROR\nI did not have time to even attempt this part :'("); //This tells the user i was unable to do this part 
             exit(0);
         }
-    return 0;
+    return 0; //this is the last part of 'main' and ends the program once it is reached
 }
 
 void RCipher(int key, char message[]){
-    int n = 1024;
+    int n = 1024; //'n' was previously declared in 'main' but it must be redeclared here
     for (int i=0; i<n && message[i] != '\0'; i++){
         //This creates a 'for' loop which tests each character one by one in 'message' until the null 0 character is read...
         //... or the program reads too many characters (Greater than the value for n)
@@ -572,15 +575,18 @@ void RCipher(int key, char message[]){
         if (message[i] <=90 && message[i] >= 65){ //between 65 and 90 are the capital letters
             //This 'if' statement will only affect capital letters leaving anything else unchanged (such as symbols)
             message[i] = message[i] + key;
-            if(message[i] >90) //this makes the letters rotate around instead of continuing...
+            if(message[i] >90) { //this makes the letters rotate around instead of continuing...
                 message[i]=message[i] - 26; //... by minusing 26 if the ascii value exceeds 90
-            else if(message[i] <65) //Since this function works to encrypt and decrypt it is important to ensure that any rotation is looped...
+            }
+            else if(message[i] <65){ //Since this function works to encrypt and decrypt it is important to ensure that any rotation is looped...
             //... if the rotation causes the message to go outside the range of capital letters
                 message[i]=message[i] + 26; //Adding 26 makes it rotate if it goes below the range of capital letters
+            }
         }
     }
     printf("Message is: "); //once each character has been altered accordingly the program prints the new message
-    printf("%s", message); //The message is printed here as a whole string rather than each character like it does with the substitution cipher
+    printf("%s\n", message); //The message is printed here as a whole string rather than each character like it does with the substitution cipher
+    
 }
 
 

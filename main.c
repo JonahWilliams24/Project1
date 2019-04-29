@@ -588,5 +588,3 @@ void RCipher(int key, char message[]){
     printf("%s\n", message); //The message is printed here as a whole string rather than each character like it does with the substitution cipher
     
 }
-
-
